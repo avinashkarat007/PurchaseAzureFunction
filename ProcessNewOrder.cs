@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace PurchaseWebHook;
 
-public class ProcessNewOrder
+public partial class ProcessNewOrder
 {
     private readonly ILogger<ProcessNewOrder> _logger;
 
@@ -15,8 +15,8 @@ public class ProcessNewOrder
     }
 
     [Function(nameof(ProcessNewOrder))]
-    public void Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] QueueMessage message)
+    public void Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] NewOrderMessage message)
     {
-        _logger.LogInformation("C# Queue trigger function processed: {messageText}", message.MessageText);
+        _logger.LogInformation($"C# Queue trigger function processed: {message.customerName} bought {message.productName}");
     }
 }
