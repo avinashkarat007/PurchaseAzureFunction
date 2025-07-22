@@ -14,7 +14,7 @@ public class NightlyReport
     }
 
     [Function("NightlyReport")]
-    public void Run([TimerTrigger("0 */15 * * * *")] TimerInfo myTimer)
+    public void Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer)
     {
         _logger.LogInformation("C# Timer trigger function executed at: {executionTime}", DateTime.Now);
         
